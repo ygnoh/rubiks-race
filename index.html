@@ -6,11 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rubiks Race</title>
     <style>
+        body {
+            text-align: center;
+        }
+
         .dice-element {
             width: 50px;
             height: 50px;
             display: inline-block;
             border: solid 1px darkgrey;
+        }
+
+        #grid {
+            margin-top: 80px;
         }
 
         .grid-element {
@@ -35,11 +43,9 @@
     </style>
 </head>
 <body>
-<div>
-    <div id="dice"></div>
-    <div id="grid"></div>
-    <img id="img" src="fireworks.gif">
-</div>
+<div id="dice"></div>
+<div id="grid"></div>
+<img id="img" src="fireworks.gif">
 <script src="index.js"></script>
 </body>
 </html>
