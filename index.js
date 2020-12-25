@@ -1,4 +1,6 @@
 const COLORS = ["white", "orange", "yellow", "blue", "green", "red"];
+const diceDiv = document.getElementById("dice");
+const gridDiv = document.getElementById("grid");
 
 function getRandomColor() {
     return COLORS[Math.random() * COLORS.length | 0]
@@ -14,6 +16,10 @@ function getDiceColors() {
     }
 
     return result;
+}
+
+function getGridColors() {
+    return COLORS.flatMap(c => [c, c, c, c]).sort(() => Math.random() - 0.5);
 }
 
 function rollDice() {
@@ -33,16 +39,24 @@ function rollDice() {
     });
 }
 
-const myColors = COLORS.reduce((acc, c) => {
-    acc.push(c);
-    acc.push(c);
-    acc.push(c);
-    acc.push(c);
+function paintGrid() {
+    const colors = getGridColors();
 
-    return acc;
-}, []);
+    for (let i = 0; i < 5; i++) {
+        const row = document.createElement("div");
 
-const diceDiv = document.getElementById("dice");
+        for (let j = 0; j < 5; j++) {
+            const col = document.createElement("div");
+
+            col.className = "grid-element";
+            col.style.backgroundColor = colors[5 * i + j];
+
+            row.appendChild(col);
+        }
+
+        gridDiv.appendChild(row);
+    }
+}
 
 rollDice();
-
+paintGrid();
