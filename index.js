@@ -1,4 +1,4 @@
-const COLORS = ["white", "orange", "yellow", "blue", "green", "red"];
+const COLORS = ["lightgrey", "orange", "yellow", "blue", "green", "red"];
 const diceDiv = document.getElementById("dice");
 const gridDiv = document.getElementById("grid");
 
@@ -49,7 +49,7 @@ function paintGrid() {
             const col = document.createElement("div");
 
             col.className = "grid-element";
-            col.style.backgroundColor = colors[5 * i + j] || "lightgrey";
+            col.style.backgroundColor = colors[5 * i + j] || "white";
 
             row.appendChild(col);
         }
