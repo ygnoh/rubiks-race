@@ -2,6 +2,7 @@ const COLORS = ["white", "orange", "yellow", "blue", "green", "red"];
 const EMPTY_COLOR = "black";
 const diceDiv = document.getElementById("dice");
 const gridDiv = document.getElementById("grid");
+const img = document.getElementById("img");
 const gridColors = getGridColors();
 let diceColors = [];
 let emptyCoord = [4, 4];
@@ -80,7 +81,13 @@ function move(e) {
         row.every((c, cIdx) => c === gridColors[rIdx + 1][cIdx + 1]));
 
     if (correct) {
-        alert("Great!!");
+        setTimeout(() => {
+            img.className = "show";
+
+            setTimeout(() => {
+                alert("Great!!");
+            }, 100);
+        }, 500);
     }
 
     function adjustColors() {
