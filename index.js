@@ -1,7 +1,6 @@
 // 6 colors: white, orange, yellow, blue, green, red
 const COLORS = ["W", "O", "Y", "B", "G", "R"];
 
-
 function getRandomColor() {
     return COLORS[Math.random() * COLORS.length | 0]
 }
@@ -18,4 +17,11 @@ function rollDice() {
     return result;
 }
 
-console.log(rollDice());
+const myColors = COLORS.reduce((acc, c) => {
+    acc.push(c);
+    acc.push(c);
+    acc.push(c);
+    acc.push(c);
+
+    return acc;
+}, []);
