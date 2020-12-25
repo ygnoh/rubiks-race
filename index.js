@@ -28,15 +28,16 @@ const myColors = COLORS.reduce((acc, c) => {
 const diceDiv = document.getElementById("dice");
 
 rollDice().forEach(row => {
-    const parent = document.createElement("div");
+    const rowDiv = document.createElement("div");
 
     row.forEach(col => {
         const div = document.createElement("div");
 
+        div.className = "dice-element";
         div.style.backgroundColor = col;
 
-        parent.appendChild(div);
+        rowDiv.appendChild(div);
     });
 
-    diceDiv.appendChild(parent);
+    diceDiv.appendChild(rowDiv);
 });
