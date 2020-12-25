@@ -4,7 +4,7 @@ function getRandomColor() {
     return COLORS[Math.random() * COLORS.length | 0]
 }
 
-function rollDice() {
+function getDiceColors() {
     const result = [[], [], []];
 
     for (let i = 0; i < 3; i++) {
@@ -14,6 +14,23 @@ function rollDice() {
     }
 
     return result;
+}
+
+function rollDice() {
+    getDiceColors().forEach(row => {
+        const rowDiv = document.createElement("div");
+
+        row.forEach(col => {
+            const div = document.createElement("div");
+
+            div.className = "dice-element";
+            div.style.backgroundColor = col;
+
+            rowDiv.appendChild(div);
+        });
+
+        diceDiv.appendChild(rowDiv);
+    });
 }
 
 const myColors = COLORS.reduce((acc, c) => {
@@ -27,17 +44,5 @@ const myColors = COLORS.reduce((acc, c) => {
 
 const diceDiv = document.getElementById("dice");
 
-rollDice().forEach(row => {
-    const rowDiv = document.createElement("div");
+rollDice();
 
-    row.forEach(col => {
-        const div = document.createElement("div");
-
-        div.className = "dice-element";
-        div.style.backgroundColor = col;
-
-        rowDiv.appendChild(div);
-    });
-
-    diceDiv.appendChild(rowDiv);
-});
