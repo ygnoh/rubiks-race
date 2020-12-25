@@ -73,39 +73,7 @@ function move(e) {
         return;
     }
 
-    let i = 0;
-
-    if (tI > eI) {
-        while (eI + i !== tI) {
-            gridColors[eI + i][tJ] = gridColors[eI + i + 1][tJ];
-
-            i++;
-        }
-    } else if (tI < eI) {
-        while (eI - i !== tI) {
-            gridColors[eI - i][tJ] = gridColors[eI - i - 1][tJ];
-
-            i++;
-        }
-    } else { // same
-        if (tJ > eJ) {
-            while (eJ + i !== tJ) {
-                gridColors[tI][eJ + i] = gridColors[tI][eJ + i + 1];
-
-                i++;
-            }
-        } else if (tJ < eJ) {
-            while (eJ - i !== tJ) {
-                gridColors[tI][eJ - i] = gridColors[tI][eJ - i - 1];
-
-                i++;
-            }
-        }
-    }
-
-    gridColors[tI][tJ] = EMPTY_COLOR;
-    emptyCoord = [tI, tJ];
-
+    adjustColors();
     repaintGrid();
 
     const correct = diceColors.every((row, rIdx) =>
@@ -113,6 +81,41 @@ function move(e) {
 
     if (correct) {
         alert("Great!!");
+    }
+
+    function adjustColors() {
+        let i = 0;
+
+        if (tI > eI) {
+            while (eI + i !== tI) {
+                gridColors[eI + i][tJ] = gridColors[eI + i + 1][tJ];
+
+                i++;
+            }
+        } else if (tI < eI) {
+            while (eI - i !== tI) {
+                gridColors[eI - i][tJ] = gridColors[eI - i - 1][tJ];
+
+                i++;
+            }
+        } else { // same
+            if (tJ > eJ) {
+                while (eJ + i !== tJ) {
+                    gridColors[tI][eJ + i] = gridColors[tI][eJ + i + 1];
+
+                    i++;
+                }
+            } else if (tJ < eJ) {
+                while (eJ - i !== tJ) {
+                    gridColors[tI][eJ - i] = gridColors[tI][eJ - i - 1];
+
+                    i++;
+                }
+            }
+        }
+
+        gridColors[tI][tJ] = EMPTY_COLOR;
+        emptyCoord = [tI, tJ];
     }
 }
 
